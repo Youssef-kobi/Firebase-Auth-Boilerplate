@@ -70,7 +70,6 @@ export const AuthProvider = ({ children }) => {
     unsubscribe = Auth.onAuthStateChanged((firebaseUser) => {
       if (firebaseUser) {
         // User is signed in;
-        console.log(firebaseUser);
         loginHandler(firebaseUser);
       } else {
         // User is signed out

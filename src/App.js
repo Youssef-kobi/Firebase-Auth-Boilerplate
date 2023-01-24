@@ -45,8 +45,8 @@ const App = () => {
       >
         <Suspense
           fallback={
-            <div className='h-screen w-screen  flex justify-center items-center'>
-              <FaSpinner />
+            <div className='h-screen w-screen bg-[#aeaeae3d] flex justify-center items-center'>
+              <FaSpinner size={56} />
             </div>
           }
         >

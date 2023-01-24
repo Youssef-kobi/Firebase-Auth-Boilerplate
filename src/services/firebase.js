@@ -92,11 +92,9 @@ export const getUserDocument = async (uid) => {
 export const updateUserProfile = async (uid, updates) => {
   try {
     const userRef = doc(db, 'users', uid);
-    console.log(userRef);
     await updateDoc(userRef, updates);
     return await getUserDocument(uid);
   } catch (error) {
-    console.log(error);
     switch (error.code) {
       case 'permission-denied':
         throw new Error(
