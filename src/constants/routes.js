@@ -1,0 +1,6 @@
+export const LOGIN = '/login'
+export const SIGNUP = '/register'
+export const DASHBOARD = '/'
+export const NOTFOUND = '/notFound'
+export const PROFILE = '/profile'
+export const RESETPASSWORD = '/resetpassword'

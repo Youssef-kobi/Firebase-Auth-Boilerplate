@@ -1,13 +1,14 @@
 /** @type {import('tailwindcss').Config} */
+/* Importing the image file into the tailwind config file. */
+// const myImage = require('./src/styles/BG');
 module.exports = {
-  content: [
-    './src/**/*.{js,ts,jsx,tsx}',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       fill: (theme) => ({
         red: theme('colors.red.primary'),
       }),
+      // backgroundImage: `url('/src/styles/BG.png')`,
       // animation: {
       //   marquee: 'marquee 30s linear infinite',
       //   marquee2: 'marquee2 30s linear infinite',
@@ -26,7 +27,7 @@ module.exports = {
       //     '0%': {
       //       transform: 'translateX(-100%)',
       //     },
-      //     '100%': {
+      //     '100%': { 
       //       transform: 'translateX(0)',
       //     },
       //   },
@@ -65,4 +66,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};

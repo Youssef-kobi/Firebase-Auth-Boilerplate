@@ -6,3 +6,6 @@
 body {
   background-color: #f7f7ff;
 }
+input[type='date'] {
+  color: #718096;
+}
