@@ -56,30 +56,31 @@
 
 <ul>
   <li>
-    <img src="https://image.flaticon.com/icons/svg/1205/1205005.svg" alt="Firebase Authentication" width="20" height="20"> Firebase Authentication
+    <i class="fas fa-fire"></i> Firebase Authentication
   </li>
   <li>
-    <img src="https://image.flaticon.com/icons/svg/149/149071.svg" alt="User registration and login" width="20" height="20"> User registration and login
+    <i class="fas fa-user-plus"></i> User registration and login
   </li>
   <li>
-    <img src="https://image.flaticon.com/icons/svg/565/565580.svg" alt="Profile updates" width="20" height="20"> Profile updates
+    <i class="fas fa-user-edit"></i> Profile updates
   </li>
   <li>
-    <img src="https://image.flaticon.com/icons/svg/901/901380.svg" alt="Sign-in with Google" width="20" height="20"> Sign-in with Google
+    <i class="fab fa-google"></i> Sign-in with Google
   </li>
   <li>
-    <img src="https://image.flaticon.com/icons/svg/124/124010.svg" alt="Sign-in with Facebook" width="20" height="20"> Sign-in with Facebook
+    <i class="fab fa-facebook"></i> Sign-in with Facebook
   </li>
   <li>
-    <img src="https://image.flaticon.com/icons/svg/565/565580.svg" alt="Sign out" width="20" height="20"> Sign out
-  </li>
-<li>
-    <img src="https://image.flaticon.com/icons/svg/565/565580.svg" alt="Routing and protected routes" width="20" height="20"> Routing and protected routes
+    <i class="fas fa-sign-out-alt"></i> Sign out
   </li>
   <li>
-    <img src="https://image.flaticon.com/icons/svg/565/565580.svg" alt="AuthContext for global state management of authentication and user data" width="20" height="20"> AuthContext for global state management of authentication and user data
+    <i class="fas fa-route"></i> Routing and protected routes
+  </li>
+  <li>
+    <i class="fas fa-user-shield"></i> AuthContext for global state management of authentication and user data
   </li>
 </ul>
+
 
 
 
