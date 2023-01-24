@@ -56,30 +56,31 @@
 
 <ul>
   <li>
-    <i class="fas fa-fire"></i> Firebase Authentication
+    <img src="https://image.flaticon.com/icons/svg/1205/1205005.svg" alt="Firebase Authentication" width="20" height="20"> Firebase Authentication
   </li>
   <li>
-    <i class="fas fa-user-plus"></i> User registration and login
+    <img src="https://image.flaticon.com/icons/svg/149/149071.svg" alt="User registration and login" width="20" height="20"> User registration and login
   </li>
   <li>
-    <i class="fas fa-user-edit"></i> Profile updates
+    <img src="https://image.flaticon.com/icons/svg/565/565580.svg" alt="Profile updates" width="20" height="20"> Profile updates
   </li>
   <li>
-    <i class="fab fa-google"></i> Sign-in with Google
+    <img src="https://image.flaticon.com/icons/svg/901/901380.svg" alt="Sign-in with Google" width="20" height="20"> Sign-in with Google
   </li>
   <li>
-    <i class="fab fa-facebook"></i> Sign-in with Facebook
+    <img src="https://image.flaticon.com/icons/svg/124/124010.svg" alt="Sign-in with Facebook" width="20" height="20"> Sign-in with Facebook
   </li>
   <li>
-    <i class="fas fa-sign-out-alt"></i> Sign out
+    <img src="https://image.flaticon.com/icons/svg/565/565580.svg" alt="Sign out" width="20" height="20"> Sign out
+  </li>
+<li>
+    <img src="https://image.flaticon.com/icons/svg/565/565580.svg" alt="Routing and protected routes" width="20" height="20"> Routing and protected routes
   </li>
   <li>
-    <i class="fas fa-route"></i> Routing and protected routes
-  </li>
-  <li>
-    <i class="fas fa-user-shield"></i> AuthContext for global state management of authentication and user data
+    <img src="https://image.flaticon.com/icons/svg/565/565580.svg" alt="AuthContext for global state management of authentication and user data" width="20" height="20"> AuthContext for global state management of authentication and user data
   </li>
 </ul>
+
 
 
 <h2 id="getting-started">Getting started</h2>
