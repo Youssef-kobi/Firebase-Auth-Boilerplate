@@ -1,7 +1,7 @@
 <h1 align="center">
   <br>
   <a href="https://github.com/youssef-kobi/firebase-auth">
-    <img src="https://raw.githubusercontent.com/youssef-kobi/firebase-auth/public/logo192.png" alt="Firebase Auth App" width="200">
+    <img src="https://github.com/Youssef-kobi/firebase-auth/blob/main/public/logo.svg" alt="Firebase Auth App" width="200">
   </a>
   <br>
   Firebase Auth App
@@ -14,8 +14,8 @@
   <a href="https://img.shields.io/npm/v/npm?style=plastic">
     <img src="https://img.shields.io/npm/v/npm?style=plastic" alt="npm version" height="18">
   </a>
-  <a href="https://github.com/youssef-kobi/firebase-auth-app">
-    <img src="https://img.shields.io/github/stars/youssef-kobi/firebase-auth-app?style=social" alt="GitHub stars">
+  <a href="https://github.com/youssef-kobi/firebase-auth">
+    <img src="https://img.shields.io/github/stars/youssef-kobi/firebase-auth?style=social" alt="GitHub stars">
   </a>
 </p>
 
@@ -89,7 +89,7 @@
 <ol>
   <li>
     <i class="fas fa-code-branch"></i> Clone the repository
-    <code>git clone https://github.com/youssef-kobi/firebase-auth-app.git</code>
+    <code>git clone https://github.com/youssef-kobi/firebase-auth.git</code>
   </li>
  <li>
     <i class="fas fa-box"></i> Install the dependencies
@@ -141,7 +141,7 @@
 
 <h2 id="live-demo">Live Demo</h2>
 
-<p>You can find a live demo of the app <a href="https://youssef-kobi.github.io/firebase-auth-app/">here</a>.</p>
+<p>You can find a live demo of the app <a href="https://youssef-kobi.github.io/firebase-auth">here</a>.</p>
 
 <h2 id="screenshots">Screenshots</h2>
 
@@ -149,6 +149,6 @@
 
 <h2 id="contribute">Contribute</h2>
 
-<p>We welcome contributions! Please create an issue <a href="https://github.com/youssef-kobi/firebase-auth-app/issues">here</a> to report bugs or suggest new features.</p>
+<p>We welcome contributions! Please create an issue <a href="https://github.com/youssef-kobi/firebase-auth/issues">here</a> to report bugs or suggest new features.</p>
 
 
