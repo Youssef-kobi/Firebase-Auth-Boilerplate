@@ -629,6 +629,9 @@ video {
 .border-transparent {
   border-color: transparent;
 }
+.bg-\[\#aeaeae3d\] {
+  background-color: #aeaeae3d;
+}
 .bg-\[\#f0f8ff7d\] {
   background-color: #f0f8ff7d;
 }
@@ -646,12 +649,6 @@ video {
 .bg-indigo-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(99 102 241 / var(--tw-bg-opacity));
-}
-.bg-\[\] {
-  background-color: ;
-}
-.bg-\[\#aeaeae3d\] {
-  background-color: #aeaeae3d;
 }
 .bg-cover {
   background-size: cover;
