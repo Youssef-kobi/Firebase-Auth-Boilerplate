@@ -1,7 +1,7 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/youssef-kobi/firebase-auth-app">
-    <img src="https://raw.githubusercontent.com/youssef-kobi/firebase-auth-app/main/logo.svg" alt="Firebase Auth App" width="200">
+  <a href="https://github.com/youssef-kobi/firebase-auth">
+    <img src="https://raw.githubusercontent.com/youssef-kobi/firebase-auth/public/logo192.png" alt="Firebase Auth App" width="200">
   </a>
   <br>
   Firebase Auth App
