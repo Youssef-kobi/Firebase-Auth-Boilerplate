@@ -1,70 +1,154 @@
-# Getting Started with Create React App
+<h1 align="center">
+  <br>
+  <a href="https://github.com/youssef-kobi/firebase-auth">
+    <img src="https://raw.githubusercontent.com/youssef-kobi/firebase-auth/public/logo192.png" alt="Firebase Auth App" width="200">
+  </a>
+  <br>
+  Firebase Auth App
+  <br>
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h4 align="center">A starter kit for adding Firebase Authentication to your web app.</h4>
 
-## Available Scripts
+<p align="center">
+  <a href="https://img.shields.io/npm/v/npm?style=plastic">
+    <img src="https://img.shields.io/npm/v/npm?style=plastic" alt="npm version" height="18">
+  </a>
+  <a href="https://github.com/youssef-kobi/firebase-auth-app">
+    <img src="https://img.shields.io/github/stars/youssef-kobi/firebase-auth-app?style=social" alt="GitHub stars">
+  </a>
+</p>
 
-In the project directory, you can run:
+<p align="center">
+  <a href="#introduction">Introduction</a> •
+  <a href="#key-features">Key Features</a> •
+  <a href="#getting-started">Getting Started</a> •
+  <a href="#deployment">Deployment</a> •
+  <a href="#built-with">Built With</a> •
+  <a href="#live-demo">Live Demo</a> •
+  <a href="#screenshots">Screenshots</a> •
+  <a href="#contribute">Contribute</a>
+</p>
 
-### `npm start`
+<h2 id="introduction">Introduction</h2>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<p>This app is a starter kit for adding Firebase Authentication to your web app, built with React and Firebase, using the react-tailwindcss-template as a boilerplate. It includes features like:</p>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<ul>
+  <li>
+    <i class="fas fa-check"></i> Email/password sign-up and sign-in
+  </li>
+  <li>
+    <i class="fas fa-check"></i> Sign-in with Google
+  </li>
+  <li>
+    <i class="fas fa-check"></i> Sign-in with Facebook
+  </li>
+  <li>
+    <i class="fas fa-check"></i> Sign-out
+  </li>
+  <li>
+    <i class="fas fa-check"></i> Update profile
+  </li>
+</ul>
 
-### `npm test`
+<h2 id="key-features">Key Features</h2>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<ul>
+  <li>
+    <i class="fas fa-fire"></i> Firebase Authentication
+  </li>
+  <li>
+    <i class="fas fa-user-plus"></i> User registration and login
+  </li>
+  <li>
+    <i class="fas fa-user-edit"></i> Profile updates
+  </li>
+  <li>
+    <i class="fab fa-google"></i> Sign-in with Google
+  </li>
+  <li>
+    <i class="fab fa-facebook"></i> Sign-in with Facebook
+  </li>
+  <li>
+    <i class="fas fa-sign-out-alt"></i> Sign out
+  </li>
+  <li>
+    <i class="fas fa-route"></i> Routing and protected routes
+  </li>
+  <li>
+    <i class="fas fa-user-shield"></i> AuthContext for global state management of authentication and user data
+  </li>
+</ul>
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<h2 id="getting-started">Getting started</h2>
 
-### `npm run eject`
+<ol>
+  <li>
+    <i class="fas fa-code-branch"></i> Clone the repository
+    <code>git clone https://github.com/youssef-kobi/firebase-auth-app.git</code>
+  </li>
+ <li>
+    <i class="fas fa-box"></i> Install the dependencies
+    <code>yarn install</code>
+    or
+    <code>npm install</code>
+  </li>
+  <li>
+    <i class="fas fa-cogs"></i> Add your Firebase config to <code>src/services/firebase.js</code>
+  </li>
+  <li>
+    <i class="fas fa-play"></i> Start the development server
+    <code>yarn start</code>
+    or
+    <code>npm start</code>
+  </li>
+</ol>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<h2 id="deployment">Deployment</h2>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<ol>
+  <li>
+    <i class="fas fa-rocket"></i> Build the app for production
+    <code>yarn build</code>
+    or
+    <code>npm run build</code>
+  </li>
+  <li>
+    <i class="fas fa-cloud-upload-alt"></i> Deploy the <code>build</code> folder to your preferred hosting service
+  </li>
+</ol>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<h2 id="built-with">Built with</h2>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<ul>
+  <li>
+    <i class="fab fa-react"></i> <a href="https://reactjs.org/">React</a>
+  </li>
+  <li>
+    <i class="fas fa-fire"></i> <a href="https://firebase.google.com/">Firebase</a>
+  </li>
+  <li>
+    <i class="fas fa-palette"></i> <a href="https://tailwindcss.com/">Tailwind CSS</a>
+  </li>
+  <li>
+    <i class="fas fa-exclamation-triangle"></i> <a href="https://www.npmjs.com/package/react-toastify">react-toastify</a>
+  </li>
+</ul>
 
-## Learn More
+<h2 id="live-demo">Live Demo</h2>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<p>You can find a live demo of the app <a href="https://youssef-kobi.github.io/firebase-auth-app/">here</a>.</p>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<h2 id="screenshots">Screenshots</h2>
 
-### Code Splitting
+<p>You can find the screenshots of the app <a href="https://drive.google.com">here</a>.</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<h2 id="contribute">Contribute</h2>
 
-### Analyzing the Bundle Size
+<p>We welcome contributions! Please create an issue <a href="https://github.com/youssef-kobi/firebase-auth-app/issues">here</a> to report bugs or suggest new features.</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
