@@ -73,7 +73,14 @@
   <li>
     <i class="fas fa-sign-out-alt"></i> Sign out
   </li>
+  <li>
+    <i class="fas fa-route"></i> Routing and protected routes
+  </li>
+  <li>
+    <i class="fas fa-user-shield"></i> AuthContext for global state management of authentication and user data
+  </li>
 </ul>
+
 
 <h2 id="getting-started">Getting started</h2>
 
