@@ -14,7 +14,7 @@ const LandingPage = () => {
       <p className='text-gray-700 font-bold text-3xl mb-4'>
         Welcome, {user.displayName}!
       </p>
-      <p className='bg-gray-900 text-xl mx-4 bg-opacity-20 p-2 rounded-xl'>
+      <p className='bg-gray-900 text-xl mx-4 bg-opacity-20 px-4 py-2 rounded-xl'>
         You have successfully logged in to the ReactJS Firebase auth
         boilerplate. This boilerplate includes Firebase authentication, routing,
         and basic styling with TailwindCSS. Feel free to customize and use it
