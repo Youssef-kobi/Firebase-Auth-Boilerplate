@@ -7,7 +7,7 @@ import {
   useState,
 } from 'react';
 import { toast } from 'react-toastify';
-import { Auth, getUserDocument, updateUserProfile } from '../services/firebase';
+import { auth, getUserDocument, updateUserProfile } from '../services/firebase';
 
 const AuthContext = createContext({
   isLoggedIn: false,
@@ -16,77 +16,88 @@ const AuthContext = createContext({
   user: {},
   updateUser: () => {},
 });
+
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
-  const userIsLoggedIn = !!user;
-  const loginHandler = useCallback(async (userCredentials) => {
-    try {
-      const userData = await getUserDocument(userCredentials.uid); // call the function to get user document
-
-      setUser({ ...userCredentials, ...userData }); // merge the user object with the data from Firestore
-      localStorage.setItem(
-        'user',
-        JSON.stringify({ ...userCredentials, ...userData })
-      );
-    } catch (error) {
-      console.error(error);
-      toast.error('Error fetching user data from Firestore');
-    }
-  }, []);
+  const isLoggedIn = !!user;
   const logoutHandler = useCallback(() => {
-    Auth.signOut();
+    auth.signOut();
     setUser(null);
     localStorage.removeItem('user');
   }, []);
 
-  useEffect(() => {
-    if (!user) logoutHandler();
-  }, [user, logoutHandler]);
-
-  const updateHandler = useCallback(
-    async (updatesObject) => {
+  const loginHandler = useCallback(
+    async (userCredentials) => {
       try {
-        const userData = await updateUserProfile(user.uid, updatesObject); // call the function to get user document
-        setUser((prev) => {
-          const newUser = { ...prev, ...userData };
-          localStorage.removeItem('user');
-          localStorage.setItem('user', JSON.stringify(newUser));
-          return newUser;
-        }); // merge the user object with the data from Firestore
+        if (!userCredentials.emailVerified) {
+          toast.success('Please Verify your Email Address ');
+          logoutHandler();
+          return;
+        }
+
+        const userData = await getUserDocument(userCredentials.uid);
+        const mergedUser = { ...userCredentials, ...userData };
+        setUser(mergedUser);
+        localStorage.setItem('user', JSON.stringify(mergedUser));
       } catch (error) {
         console.error(error);
         toast.error('Error fetching user data from Firestore');
       }
+    },
+    [logoutHandler]
+  );
 
-      localStorage.removeItem('user');
-      localStorage.setItem('user', JSON.stringify(user));
+  useEffect(() => {
+    if (!user) {
+      logoutHandler();
+    }
+  }, [user, logoutHandler]);
+
+  const updateUserHandler = useCallback(
+    async (updatesObject) => {
+      try {
+        const updatedUserData = await updateUserProfile(
+          user.uid,
+          updatesObject
+        );
+        const updatedUser = { ...user, ...updatedUserData };
+        setUser(updatedUser);
+        localStorage.setItem('user', JSON.stringify(updatedUser));
+      } catch (error) {
+        console.error(error);
+        toast.error('Error updating user data in Firestore');
+      }
     },
     [user]
   );
+
   useEffect(() => {
-    let unsubscribe;
-    unsubscribe = Auth.onAuthStateChanged((firebaseUser) => {
+    const unsubscribe = auth.onAuthStateChanged((firebaseUser) => {
       if (firebaseUser) {
-        // User is signed in;
         loginHandler(firebaseUser);
       } else {
-        // User is signed out
         logoutHandler();
       }
     });
-    return () => unsubscribe();
-  }, [logoutHandler, loginHandler]);
 
-  const foo = useMemo(() => {
+    return () => unsubscribe();
+  }, [loginHandler, logoutHandler]);
+
+  const authContextValue = useMemo(() => {
     return {
-      isLoggedIn: userIsLoggedIn,
+      isLoggedIn,
       login: loginHandler,
       logout: logoutHandler,
       user,
-      updateUser: updateHandler,
+      updateUser: updateUserHandler,
     };
-  }, [userIsLoggedIn, loginHandler, logoutHandler, user, updateHandler]);
-  return <AuthContext.Provider value={foo}>{children}</AuthContext.Provider>;
+  }, [isLoggedIn, loginHandler, logoutHandler, user, updateUserHandler]);
+
+  return (
+    <AuthContext.Provider value={authContextValue}>
+      {children}
+    </AuthContext.Provider>
+  );
 };

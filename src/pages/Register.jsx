@@ -10,57 +10,59 @@ import {
   sendEmailVerification,
 } from 'firebase/auth';
 import {
-  Auth,
+  auth,
   createUserDocument,
   handleAuthError,
   signInWithGoogle,
 } from '../services/firebase';
 import { useAuth } from '../context/auth';
 import { FcGoogle } from 'react-icons/fc';
+import LoadingPage from './LoadingPage';
+import { useEffect } from 'react';
 
 const Register = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     setError,
-    reset,
   } = useForm({ resolver: yupResolver(registerSchema) });
 
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   const { login } = useAuth();
+  useEffect(() => {
+    document.title = 'Register Page | ReactJS Firebase Auth Boilerplate';
+  }, []);
   const onSubmitHandler = async (data) => {
-    createUserWithEmailAndPassword(Auth, data.email, data.password)
-      .then(async (userCredential) => {
-        sendEmailVerification(userCredential.user);
-        const addDoc = {
-          uid: userCredential.user.uid,
-          displayName: `${data.firstName} ${data.lastName}`,
-          firstName: data.firstName,
-          lastName: data.lastName,
-          email: userCredential.user.email,
-          photoURL: '',
-          birthDate: '',
-          address: '',
-        };
-        try {
-          const user = await createUserDocument(addDoc);
-          console.log(user);
-        } catch (error) {
-          console.error(error);
-          alert('An error occurred while fetching profile data');
-        }
-        Navigate(PATHS.LOGIN);
-        toast.success('Please Verify your Email Address ');
-      })
-      .catch((error) => {
-        if (error.code === 'auth/wrong-password') {
-          handleAuthError(error.code, 'password', setError);
-        } else {
-          handleAuthError(error.code, 'email', setError);
-        }
-      });
-    reset();
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+        );
+      sendEmailVerification(userCredential.user);
+
+      const addDoc = {
+        uid: userCredential.user.uid,
+        displayName: `${data.firstName} ${data.lastName}`,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: userCredential.user.email,
+        photoURL: '',
+        birthDate: '',
+        address: '',
+      };
+
+      createUserDocument(addDoc);
+
+      navigate(PATHS.LOGIN);
+    } catch (error) {
+      if (error.code === 'auth/wrong-password') {
+        handleAuthError(error.code, 'password', setError);
+      } else {
+        handleAuthError(error.code, 'email', setError);
+      }
+    }
   };
   // google sign in handler
   const googleSignInHandler = async () => {
@@ -74,12 +76,14 @@ const Register = () => {
       });
   };
   return (
-      <div className='container md:w-1/2 lg:w-1/3 p-4 bg-[#f0f8ff7d] rounded-lg flex flex-col items-center px-3 font-Public'>
+    <>
+      {isSubmitting && <LoadingPage />}
+      <div className='container md:w-1/2 lg:w-1/3 p-4 bg-[#f0f8ff7d] rounded-3xl drop-shadow-[0_100px_25px_rgba(0,0,0,0.25)] flex flex-col items-center px-3 font-Public'>
         <div className='flex flex-col items-center w-full'>
-          <h4 className=' text-xl text-center font-bold text-gray-900 mb-2'>
+          <h4 className=' text-4xl text-center font-bold text-gray-900 mb-2'>
             Sign Up
           </h4>
-          <p className='mb-6 text-center text-gray-500 text-base '>
+          <p className='mb-6 text-center text-gray-600 text-base '>
             Register your account
           </p>
         </div>
@@ -95,9 +99,9 @@ const Register = () => {
                     First name
                   </label>
                   <div
-                    className={`flex w-full border rounded h-10 ${
+                    className={`flex w-full border rounded-xl h-10 ${
                       !errors.firstName?.message
-                        ? 'border-gray-500'
+                        ? 'border-gray-600'
                         : 'border-red-700 border-2'
                     }`}
                   >
@@ -106,7 +110,7 @@ const Register = () => {
                       className='bg-white-light flex justify-center items-center w-12'
                     >
                       <svg
-                        className='w-5 h-5 text-gray-500'
+                        className='w-5 h-5 text-gray-600'
                         fill='none'
                         stroke='currentColor'
                         viewBox='0 0 24 24'
@@ -122,10 +126,11 @@ const Register = () => {
                     </label>
                     <input
                       id='firstName'
-                      className='w-full px-4 py-2 placeholder:text-gray-500 rounded bg-transparent outline-none'
+                      className='w-full px-4 py-2 placeholder:text-gray-600 rounded-xl bg-transparent outline-none'
                       {...register('firstName')}
                       placeholder='First Name'
                       type='text'
+                      disabled={isSubmitting}
                     />
                   </div>
                   <p className='text-xs px-1 first-letter:uppercase text-red-700'>
@@ -137,9 +142,9 @@ const Register = () => {
                     Last name
                   </label>
                   <div
-                    className={`flex w-full border rounded h-10 ${
+                    className={`flex w-full border rounded-xl h-10 ${
                       !errors.lastName?.message
-                        ? 'border-gray-500'
+                        ? 'border-gray-600'
                         : 'border-red-700 border-2'
                     }`}
                   >
@@ -148,7 +153,7 @@ const Register = () => {
                       className='bg-white-light flex justify-center items-center w-12'
                     >
                       <svg
-                        className='w-5 h-5 text-gray-500'
+                        className='w-5 h-5 text-gray-600'
                         fill='none'
                         stroke='currentColor'
                         viewBox='0 0 24 24'
@@ -164,10 +169,11 @@ const Register = () => {
                     </label>
                     <input
                       id='lastName'
-                      className='w-full px-4 py-2 placeholder:text-gray-500 rounded bg-transparent outline-none'
+                      className='w-full px-4 py-2 placeholder:text-gray-600 rounded-xl bg-transparent outline-none'
                       {...register('lastName')}
                       placeholder='Last name'
                       type='text'
+                      disabled={isSubmitting}
                     />
                   </div>
                   <p className='text-xs px-1 first-letter:uppercase text-red-700'>
@@ -179,9 +185,9 @@ const Register = () => {
                 Email
               </label>
               <div
-                className={`flex w-full border rounded h-10 ${
+                className={`flex w-full border rounded-xl h-10 ${
                   !errors.email?.message
-                    ? 'border-gray-500'
+                    ? 'border-gray-600'
                     : 'border-red-700 border-2'
                 }`}
               >
@@ -190,7 +196,7 @@ const Register = () => {
                   className='bg-white-light flex justify-center items-center w-12'
                 >
                   <svg
-                    className='w-5 h-5 text-gray-500'
+                    className='w-5 h-5 text-gray-600'
                     fill='none'
                     stroke='currentColor'
                     viewBox='0 0 24 24'
@@ -206,10 +212,11 @@ const Register = () => {
                 </label>
                 <input
                   id='email'
-                  className='w-full px-4 py-2 placeholder:text-gray-500 rounded bg-transparent outline-none'
+                  className='w-full px-4 py-2 placeholder:text-gray-600 rounded-xl bg-transparent outline-none'
                   {...register('email')}
                   placeholder='E-mail'
                   type='text'
+                  disabled={isSubmitting}
                 />
               </div>
               <p className='text-xs px-1 first-letter:uppercase text-red-700'>
@@ -224,9 +231,9 @@ const Register = () => {
                 </label>
               </div>
               <div
-                className={`flex w-full border rounded h-10 ${
+                className={`flex w-full border rounded-xl h-10 ${
                   !errors.password?.message
-                    ? 'border-gray-500'
+                    ? 'border-gray-600'
                     : 'border-red-700 border-2'
                 }`}
               >
@@ -235,7 +242,7 @@ const Register = () => {
                   className='bg-white-light flex justify-center items-center w-12'
                 >
                   <svg
-                    className='w-5 h-5 text-gray-500'
+                    className='w-5 h-5 text-gray-600'
                     fill='none'
                     stroke='currentColor'
                     viewBox='0 0 24 24'
@@ -251,10 +258,11 @@ const Register = () => {
                 </label>
                 <input
                   id='password'
-                  className='w-full px-4 py-2 placeholder:text-gray-500 rounded bg-transparent outline-none'
+                  className='w-full px-4 py-2 placeholder:text-gray-600 rounded-xl bg-transparent outline-none'
                   {...register('password')}
                   placeholder='Password'
                   type='password'
+                  disabled={isSubmitting}
                 />
               </div>
               <p className='text-xs px-1 first-letter:uppercase text-red-700'>
@@ -262,32 +270,32 @@ const Register = () => {
               </p>
             </div>
             <button
-              className=' rounded mt-4 px-4 py-2 bg-[#412d70] active:bg-violet-800 hover:bg-violet-800 text-gray-200 font-medium'
+              className=' rounded-xl mt-4 px-4 py-2 bg-[#891c2c] active:bg-opacity-90 hover:bg-opacity-90 text-gray-200 font-medium'
               type='submit'
             >
               Sign up
             </button>
             <p className='text-xs text-center mt-2 '>
               {`By registering you agree to the ${pkg.name.replace('-', ' ')} `}
-              <Link className='text-blue-600' to='/'>
+              <Link className='text-[#a11e31]' to='/'>
                 Terms of Use
               </Link>
             </p>
           </form>
           <div>
             <button className='button' onClick={googleSignInHandler}>
-              <FcGoogle size={32} />
+              <FcGoogle size={46} />
             </button>
           </div>
         </div>
         <div className='mt-4 w-full flex text-center items-center flex-col'>
           <p>
             Have an account ?{' '}
-            <Link to='/login' className='text-blue-600'>
+            <Link to='/login' className='text-[#a11e31]'>
               Sign in
             </Link>
           </p>
-          <p className='flex mt-12 items-center'>
+          <p className='flex mt-8 items-center'>
             @ 2023 Crafted with
             <svg
               className='w-6 h-6 fill-rose-800'
@@ -305,6 +313,7 @@ const Register = () => {
           </p>
         </div>
       </div>
+    </>
   );
 };
 

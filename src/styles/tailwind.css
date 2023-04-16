@@ -5,7 +5,8 @@
 
 body {
   background-color: #f7f7ff;
+  overflow: hidden;
 }
 input[type='date'] {
-  color: #718096;
+  color: rgb(75 85 99)
 }

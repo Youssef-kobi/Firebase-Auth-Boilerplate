@@ -9,42 +9,47 @@ import { useAuth } from '../context/auth';
 import * as PATHS from '../constants/routes';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
-import {
-  Auth,
-  handleAuthError,
-  signInWithGoogle,
-} from '../services/firebase';
+import { auth, handleAuthError, signInWithGoogle } from '../services/firebase';
+import LoadingPage from './LoadingPage';
+import { useEffect } from 'react';
 
 const Login = () => {
+
+useEffect(() => {
+  document.title = 'Login Page | ReactJS Firebase Auth Boilerplate';
+}, []);
+  
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    reset,
+    formState: { errors, isSubmitting },
     setError,
   } = useForm({ resolver: yupResolver(loginSchema) });
   const { login } = useAuth();
-  const onSubmitHandler = (data) => {
-    signInWithEmailAndPassword(Auth, data.email, data.password)
-      .then(async (userCredential) => {
-        if (userCredential.user.emailVerified) {
-          login(userCredential.user);
-        } else {
-          setError(
-            'email',
-            { type: 'custom', message: 'Please verify your Email Address' },
-            { shouldFocus: true }
-          );
-        }
-        reset();
-      })
-      .catch((error) => {
-        if (error.code === 'auth/wrong-password') {
-          handleAuthError(error.code, 'password', setError);
-        } else {
-          handleAuthError(error.code, 'email', setError);
-        }
-      });
+  const onSubmitHandler = async (data) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+      if (userCredential.user.emailVerified) {
+        login(userCredential.user);
+      } else {
+        setError(
+          'email',
+          { type: 'custom', message: 'Please verify your Email Address' },
+          { shouldFocus: true }
+        );
+      }
+      // reset();
+    } catch (error) {
+      if (error.code === 'auth/wrong-password') {
+        handleAuthError(error.code, 'password', setError);
+      } else {
+        handleAuthError(error.code, 'email', setError);
+      }
+    }
   };
   // google sign in handler
   const googleSignInHandler = async () => {
@@ -63,30 +68,31 @@ const Login = () => {
       });
   };
   return (
-   
-      <div className='container md:w-1/2 lg:w-1/3 p-4 bg-[#f0f8ff7d] rounded-lg flex flex-col items-center px-3 font-Public'>
+    <>
+      {isSubmitting && <LoadingPage />}
+      <div className='container md:w-1/2 lg:w-1/3 p-4 bg-[#f0f8ff7d] drop-shadow-[0_100px_25px_rgba(0,0,0,0.25)] rounded-3xl flex flex-col items-center px-3 font-Public'>
         <div className='flex flex-col items-center  w-full'>
           {/* <img className='mb-12 h-[30px] mx-0 ' src='./Logo.png' alt='logo' /> */}
-          <h4 className=' text-xl text-center font-bold text-gray-900 mb-2'>
+          <h1 className=' text-4xl text-center font-bold text-gray-900 mb-2'>
             Sign in
-          </h4>
-          <p className='mb-6 text-center text-gray-500 text-base '>
+          </h1>
+          <p className='mb-6 text-center text-gray-900 text-opacity-80 text-base '>
             Sign in to continue
           </p>
         </div>
         <div className=' flex flex-col items-center w-full rounded'>
           <form
             onSubmit={handleSubmit(onSubmitHandler)}
-            className='flex flex-col w-full p-10'
+            className='flex flex-col w-full px-8 py-4'
           >
-            <div className='flex flex-col w-full mb-3 text-gray-900 font-medium'>
+            <div className='flex flex-col w-full mb-3 text-gray-900  font-medium'>
               <label className='mb-2 ' htmlFor='email'>
                 Email
               </label>
               <div
-                className={`flex w-full border rounded h-10 ${
+                className={`flex w-full border rounded-xl h-10 ${
                   !errors.email?.message
-                    ? 'border-gray-500'
+                    ? 'border-gray-600 '
                     : 'border-red-700 border-2'
                 }`}
               >
@@ -95,7 +101,7 @@ const Login = () => {
                   className='flex justify-center items-center w-12'
                 >
                   <svg
-                    className='w-5 h-5 text-gray-500'
+                    className='w-5 h-5 text-gray-600 '
                     fill='none'
                     stroke='currentColor'
                     viewBox='0 0 24 24'
@@ -111,10 +117,11 @@ const Login = () => {
                 </label>
                 <input
                   id='email'
-                  className='w-full px-4 py-2 placeholder:text-gray-500 rounded bg-transparent outline-none'
+                  className='w-full px-4 py-2 placeholder:text-gray-600 rounded-xl bg-transparent outline-none'
                   {...register('email')}
                   placeholder='Email'
                   type='text'
+                  disabled={isSubmitting}
                 />
               </div>
               <p className='text-xs px-1 text-red-700'>
@@ -131,9 +138,9 @@ const Login = () => {
                 </Link>
               </div>
               <div
-                className={`flex w-full border rounded h-10 ${
+                className={`flex w-full border rounded-xl h-10 ${
                   !errors.password?.message
-                    ? 'border-gray-500'
+                    ? 'border-gray-600'
                     : 'border-red-700 border-2'
                 }`}
               >
@@ -142,7 +149,7 @@ const Login = () => {
                   className='bg-white-light flex justify-center items-center w-12'
                 >
                   <svg
-                    className='w-5 h-5 text-gray-500'
+                    className='w-5 h-5 text-gray-600'
                     fill='none'
                     stroke='currentColor'
                     viewBox='0 0 24 24'
@@ -158,18 +165,19 @@ const Login = () => {
                 </label>
                 <input
                   id='password'
-                  className='w-full placeholder:text-gray-500 px-4 py-2 rounded bg-transparent outline-none'
+                  className='w-full placeholder:text-gray-600 px-4 py-2 rounded-xl bg-transparent outline-none'
                   {...register('password')}
                   placeholder='Password'
                   type='password'
+                  disabled={isSubmitting}
                 />
               </div>
               <p className='text-xs px-1 text-red-700'>
                 {errors.password?.message}
               </p>
-            </div>           
+            </div>
             <button
-              className=' rounded mt-8 px-4 py-2 bg-[#412d70] active:bg-violet-800 hover:bg-violet-800 text-gray-200 font-medium'
+              className=' rounded-xl mt-2 px-4 py-2 bg-[#891c2c] active:bg-opacity-80 hover:bg-opacity-90 drop-shadow-[0_100px_25px_rgba(0,0,0,0.25)] text-gray-200 font-medium'
               type='submit'
             >
               Sign in
@@ -177,18 +185,21 @@ const Login = () => {
           </form>
           <div>
             <button className='button' onClick={googleSignInHandler}>
-              <FcGoogle size={32} />
+              <FcGoogle
+                className='drop-shadow-[0_10px_25px_rgba(0,0,0,0.55)]'
+                size={46}
+              />
             </button>
           </div>
         </div>
-        <div className='mt-12 w-full flex items-center flex-col'>
+        <div className='mt-8 w-full flex items-center flex-col'>
           <p>
             Don&apos;t have an account ?{' '}
-            <Link to='/register' className='text-blue-600'>
+            <Link to='/register' className='text-[#a11e31]'>
               Signup now
             </Link>
           </p>
-          <p className='flex mt-12 items-center'>
+          <p className='  mt-8 flex items-center'>
             @ 2023. Crafted with
             <svg
               className='w-6 h-6 fill-rose-800'
@@ -206,6 +217,7 @@ const Login = () => {
           </p>
         </div>
       </div>
+    </>
   );
 };
 
