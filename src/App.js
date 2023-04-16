@@ -12,6 +12,7 @@ import * as PATHS from './constants/routes';
 import { AuthProvider, useAuth } from './context/auth';
 import myImage from './assets/1.png';
 import LandingPage from './pages/LandingPage';
+import LoadingPage from './pages/LoadingPage';
 
 const Login = lazy(() => import('./pages/Login'));
 const Register = lazy(() => import('./pages/Register'));
@@ -45,13 +46,7 @@ const App = () => {
           backgroundImage: `url(${myImage})`,
         }}
       >
-        <Suspense
-          fallback={
-            <div className='h-screen w-screen bg-[#aeaeae3d] flex justify-center items-center'>
-              <FaSpinner size={56} />
-            </div>
-          }
-        >
+        <Suspense fallback={<LoadingPage />}>
           <BrowserRouter>
             <Routes>
               <Route element={<PublicRoute />}>
