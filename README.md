@@ -84,7 +84,7 @@
 <ol>
   <li>
     <i class="fas fa-code-branch"></i> Clone the repository
-    <code>git clone https://github.com/youssef-kobi/firebase-auth.git</code>
+    <code>git clone https://github.com/youssef-kobi/Firebase-Auth-Boilerplate.git</code>
   </li>
  <li>
     <i class="fas fa-box"></i> Install the dependencies
@@ -93,7 +93,17 @@
     <code>npm install</code>
   </li>
   <li>
-    <i class="fas fa-cogs"></i> Add your Firebase config to <code>src/services/firebase.js</code>
+    <i class="fas fa-cogs"></i> Add your Firebase config to <code>.env</code>
+  </li>
+   <li>
+    <i class="fas fa-cogs"></i>As<code>
+    REACT_APP_FIREBASE_API_KEY=
+REACT_APP_FIREBASE_AUTH_DOMAIN=
+REACT_APP_FIREBASE_PROJECT_ID=
+REACT_APP_FIREBASE_STORAGE_BUCKET=
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=
+REACT_APP_FIREBASE_APP_ID=
+REACT_APP_FIREBASE_MEASUREMENT_ID=</code>
   </li>
   <li>
     <i class="fas fa-play"></i> Start the development server
@@ -162,6 +172,6 @@
 
 <h2 id="contribute">Contribute</h2>
 
-<p>We welcome contributions! Please create an issue <a href="https://github.com/youssef-kobi/Firebase-Auth-Template/issues">here</a> to report bugs or suggest new features.</p>
+<p>We welcome contributions! Please create an issue <a href="https://github.com/youssef-kobi/Firebase-Auth-Boilerplate/issues">here</a> to report bugs or suggest new features.</p>
 
 
