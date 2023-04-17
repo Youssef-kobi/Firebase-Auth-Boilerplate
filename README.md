@@ -162,6 +162,6 @@
 
 <h2 id="contribute">Contribute</h2>
 
-<p>We welcome contributions! Please create an issue <a href="https://github.com/youssef-kobi/firebase-auth/issues">here</a> to report bugs or suggest new features.</p>
+<p>We welcome contributions! Please create an issue <a href="https://github.com/youssef-kobi/Firebase-Auth-Template/issues">here</a> to report bugs or suggest new features.</p>
 
 
