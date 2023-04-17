@@ -1,8 +1,9 @@
 <h1 align="center">
   <br>
   <a href="https://github.com/youssef-kobi/firebase-auth">
-    <img src="https://github.com/Youssef-kobi/firebase-auth/blob/main/public/logo.svg" alt="Firebase Auth App" width="200">
+    <img src="https://user-images.githubusercontent.com/52678976/232369930-b53199ff-bb25-4cdb-bc93-aadf01fa3c8e.png" alt="Firebase Auth App" width="200">
   </a>
+
   <br>
   Firebase Auth App
   <br>
@@ -42,9 +43,6 @@
     <i class="fas fa-check"></i> Sign-in with Google
   </li>
   <li>
-    <i class="fas fa-check"></i> Sign-in with Facebook
-  </li>
-  <li>
     <i class="fas fa-check"></i> Sign-out
   </li>
   <li>
@@ -66,9 +64,6 @@
   </li>
   <li>
     <i class="fab fa-google"></i> Sign-in with Google
-  </li>
-  <li>
-    <i class="fab fa-facebook"></i> Sign-in with Facebook
   </li>
   <li>
     <i class="fas fa-sign-out-alt"></i> Sign out
@@ -141,11 +136,29 @@
 
 <h2 id="live-demo">Live Demo</h2>
 
-<p>You can find a live demo of the app <a href="https://youssef-kobi.github.io/firebase-auth">here</a>.</p>
+<p>You can find a live demo of the app <a href="https://yel-firebase-auth.vercel.app">here</a>.</p>
 
 <h2 id="screenshots">Screenshots</h2>
 
-<p>You can find the screenshots of the app <a href="https://drive.google.com">here</a>.</p>
+<h4>Login</h4>
+
+<img src="https://user-images.githubusercontent.com/52678976/232370246-4ea8593e-86d6-4403-b83b-4b8a8f7e2444.png" alt="Login" />
+
+
+<h4>Register</h4>
+
+<img src="https://user-images.githubusercontent.com/52678976/232370242-1bb49cd4-0ac7-4cc6-b52c-00aedb25e8d0.png" alt="Register" />
+
+
+<h4>Profile</h4>
+
+<img src="https://user-images.githubusercontent.com/52678976/232370236-cf5699d2-fe1b-4746-90e0-0d7f86bba2d5.png" alt="Profile" />
+
+
+<h4>LandingPage</h4>
+
+<img src="https://user-images.githubusercontent.com/52678976/232370227-e61f1c42-2d18-4be6-9bb8-c631810f6ddf.png" alt="Login" />
+
 
 <h2 id="contribute">Contribute</h2>
 
